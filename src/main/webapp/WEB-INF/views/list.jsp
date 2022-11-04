@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,12 +17,14 @@
 			<th>한줄내용</th>
 			<th>삭제</th>
 		</tr>
+		<c:forEach items="${list}" var="dto">
 		<tr align="center" height="40">
-			<td>3</td>
-			<td>홍길동</td>
-			<td align="left" width="700">안녕하세요. 오늘 날씨가 춥습니다.</td>
-			<td><input type="button" value="×" onclick="javascript:window.location='delete'"></td>
+			<td>${dto.mid }</td>
+			<td>${dto.mwriter }</td>
+			<td align="left" width="700">${dto.mcontent }</td>
+			<td><input type="button" value="×" onclick="javascript:window.location='delete?mid=${dto.mid }'"></td>
 		</tr>
+		</c:forEach>
 		<tr>
 			<td colspan="4" align="right">
 				<input type="button" value="한줄쓰기" onclick="javascript:window.location='writeForm'">
